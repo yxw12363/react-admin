@@ -1,24 +1,33 @@
 import React, { Component } from "react";
 import "./login.less";
 import logo from "./images/logo.png";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { reqLogin } from "../../api";
+// import { reqLogin } from "../../api";
 class Login extends Component {
   render() {
     var onFinish = async (values) => {
       const { username, password } = values;
       if (!!username && !!password) {
         /*接口请求*/
-
-        const response = await reqLogin(username, password);
-        console.log("response", response.data);
-
+        // const result = await reqLogin(username, password);
+        // if (result.xx ===0) {
+        //   console.log("成功");
+        // message.success('登录成功');
+        // } else {
+        // message.error(result.msg)
+        //   console.log(result.msg, "失败");
+        // }
+        console.log(1);
         if (username === "admin" && password === "123456") {
-          console.log("登录成功");
+          message.success("登录成功");
+          console.log(window);
+          window.location.href = "/admin";
+        } else {
+          message.error("用户名和密码错误");
         }
       } else {
-        console.log("校验失败");
+        message.error("用户名和密码错误");
       }
     };
     return (
