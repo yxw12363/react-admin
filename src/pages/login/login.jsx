@@ -4,10 +4,16 @@ import logo from "./images/logo.png";
 import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 
-export default class login extends Component {
+class Login extends Component {
   render() {
     var onFinish = (values) => {
-      console.log("Received values of form: ", values);
+      if (!!values.username && !!values.password) {
+        if (values.username === "admin" && values.password === "123456") {
+          console.log("登录成功");
+        }
+      } else {
+        console.log("校验失败");
+      }
     };
     return (
       <div className="login">
@@ -17,6 +23,7 @@ export default class login extends Component {
         </header>
         <section className="login-content">
           <h2>用户登录</h2>
+
           <Form
             name="normal_login"
             className="login-form"
@@ -30,7 +37,20 @@ export default class login extends Component {
               rules={[
                 {
                   required: true,
-                  message: "Please input your Username!",
+                  whitespace: true,
+                  message: "用户名必须输入 !",
+                },
+                {
+                  min: 4,
+                  message: "最小不能低于4位",
+                },
+                {
+                  max: 12,
+                  message: "最多不能超过12位",
+                },
+                {
+                  pattern: /^[a-zA-Z0-9_]+$/,
+                  message: "用户名必须由下划线~数字和字母组成",
                 },
               ]}
             >
@@ -44,7 +64,20 @@ export default class login extends Component {
               rules={[
                 {
                   required: true,
-                  message: "Please input your Password!",
+                  whitespace: true,
+                  message: "密码必须输入 !",
+                },
+                {
+                  min: 4,
+                  message: "最小不能低于4位",
+                },
+                {
+                  max: 12,
+                  message: "最多不能超过12位",
+                },
+                {
+                  pattern: /^[a-zA-Z0-9_]+$/,
+                  message: "用户名必须由下划线~数字和字母组成",
                 },
               ]}
             >
@@ -69,3 +102,5 @@ export default class login extends Component {
     );
   }
 }
+
+export default Login;
