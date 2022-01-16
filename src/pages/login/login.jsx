@@ -6,17 +6,17 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { reqLogin } from "../../api";
 class Login extends Component {
   render() {
-    var onFinish = (values) => {
+    var onFinish = async (values) => {
       const { username, password } = values;
       if (!!username && !!password) {
         /*接口请求*/
-        // reqLogin(username, password)
-        //   .then((response) => {
-        //     console.log("成功", response.data);
-        //   })
-        //   .catch((error) => {
-        //     console.log("失败", error);
-        //   });
+        try {
+          const response = await reqLogin(username, password);
+          console.log("response", response.data);
+        } catch (error) {
+          console.log(error);
+        }
+
         if (username === "admin" && password === "123456") {
           console.log("登录成功");
         }
