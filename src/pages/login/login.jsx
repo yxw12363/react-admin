@@ -3,12 +3,21 @@ import "./login.less";
 import logo from "./images/logo.png";
 import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-
+import { reqLogin } from "../../api";
 class Login extends Component {
   render() {
     var onFinish = (values) => {
-      if (!!values.username && !!values.password) {
-        if (values.username === "admin" && values.password === "123456") {
+      const { username, password } = values;
+      if (!!username && !!password) {
+        /*接口请求*/
+        // reqLogin(username, password)
+        //   .then((response) => {
+        //     console.log("成功", response.data);
+        //   })
+        //   .catch((error) => {
+        //     console.log("失败", error);
+        //   });
+        if (username === "admin" && password === "123456") {
           console.log("登录成功");
         }
       } else {
