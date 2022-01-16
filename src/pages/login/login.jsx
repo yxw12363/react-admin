@@ -10,12 +10,9 @@ class Login extends Component {
       const { username, password } = values;
       if (!!username && !!password) {
         /*接口请求*/
-        try {
-          const response = await reqLogin(username, password);
-          console.log("response", response.data);
-        } catch (error) {
-          console.log(error);
-        }
+
+        const response = await reqLogin(username, password);
+        console.log("response", response.data);
 
         if (username === "admin" && password === "123456") {
           console.log("登录成功");
