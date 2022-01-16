@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./login.less";
 import logo from "./images/logo.png";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 
 export default class login extends Component {
@@ -36,7 +36,7 @@ export default class login extends Component {
             >
               <Input
                 prefix={<UserOutlined className="site-form-item-icon" />}
-                placeholder="Username"
+                placeholder="用户名"
               />
             </Form.Item>
             <Form.Item
@@ -51,7 +51,7 @@ export default class login extends Component {
               <Input
                 prefix={<LockOutlined className="site-form-item-icon" />}
                 type="password"
-                placeholder="Password"
+                placeholder="登录"
               />
             </Form.Item>
             <Form.Item>
